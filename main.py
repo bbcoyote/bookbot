@@ -16,11 +16,16 @@ def get_word_count(string):
 def get_character_count(document):
     lower_case_doc = document.lower()
     char_dict = {}
+    char_dict_list = []
     for character in lower_case_doc:
         char_dict[character] = char_dict.setdefault(character, 0) + 1
-    print(char_dict)
+    for key_pair in char_dict:
+        if key_pair.isalpha():
+            char_dict_list.append({"character": key_pair, "count": char_dict[key_pair]})
+    char_dict_list.sort(reverse=True, key=lambda d: d["count"])
+    print(char_dict_list)
 
 
 
-# main()
-get_character_count("Hello this works like this")
+main()
+
